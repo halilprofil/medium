@@ -26,7 +26,6 @@ body {
 
 * {
   box-sizing: border-box;
-  padding: 0;
   margin: 0;
 }
 
@@ -39,4 +38,99 @@ a {
   html {
     color-scheme: dark;
   }
+}
+
+.Header {
+  padding-inline: 5px;
+  padding-block: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgb(238, 231, 231);
+}
+
+.header-left-content {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  justify-content: center;
+
+  p {
+    cursor: pointer;
+    font-size: 40px;
+    font-weight: 800;
+  }
+
+  input {
+    background-color: rgb(238, 234, 234);
+    border-radius: 20px;
+    border: none;
+    height: 40px;
+  }
+}
+.header-right-content {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  justify-content: center;
+  color: gray;
+
+  p {
+    cursor: pointer;
+  }
+  button {
+    cursor: pointer;
+    height: 40px;
+    width: 40px;
+    font-size: 16px;
+    border: none;
+    border-radius: 50%;
+    background-color: rgb(118, 42, 118);
+    color: #ffffff;
+    font-weight: 700;
+  }
+  div {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+}
+.loginPage {
+  background-color: rgb(246, 241, 234);
+  padding-block: 25px;
+}
+.login-nav {
+  padding-inline: 120px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  p {
+    font-weight: 900;
+    font-size: 28px;
+  }
+  div {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+
+    p {
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    button {
+      border: none;
+      border-radius: 28px;
+      color: white;
+      background-color: black;
+      padding: 16px;
+      font-weight: 500;
+    }
+  }
+}
+.divider {
+  margin-top: 20px;
+  width: 100%;
+  border-bottom: 1px solid black;
 }
