@@ -13,7 +13,7 @@ export default function AddComment({ postId }) {
     <div>
       <form action={action}>
         <textarea name="comment" id=""></textarea>
-        <input type="hidden" value={postId} name="postId" id=""></input>
+        <input type="hidden" value={postId} name="postId"></input>
         {state && state.errors && <p>{state.errors.comment}</p>}
         <button type="submit">Submit</button>
       </form>

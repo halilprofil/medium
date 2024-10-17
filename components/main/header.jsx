@@ -20,7 +20,7 @@ export default async function MainHeader() {
         </div>
         <div className="header-right-content">
           <div>
-            <FontAwesomeIcon icon={faPenToSquare} width={40} height={40} />
+            <Link href="/new-post"> <FontAwesomeIcon icon={faPenToSquare} width={40} height={40} /></Link>
             <p>Write</p>
           </div>
           <p>

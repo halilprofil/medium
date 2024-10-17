@@ -97,6 +97,7 @@ a {
 }
 .loginPage {
   background-color: rgb(246, 241, 234);
+  min-height: 100vh;
   padding-block: 25px;
 }
 .login-nav {
@@ -104,10 +105,12 @@ a {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 16px;
 
   p {
     font-weight: 900;
     font-size: 28px;
+    cursor: pointer;
   }
   div {
     display: flex;
@@ -117,6 +120,7 @@ a {
     p {
       font-size: 14px;
       font-weight: 500;
+      cursor: pointer;
     }
 
     button {
@@ -126,11 +130,51 @@ a {
       background-color: black;
       padding: 16px;
       font-weight: 500;
+      cursor: pointer;
     }
   }
 }
 .divider {
-  margin-top: 20px;
   width: 100%;
   border-bottom: 1px solid black;
+}
+
+.loginFlexBox {
+  margin-top: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.loginFlexBoxPadding {
+  padding-left: 140px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.loginTitle {
+  font-size: 48px;
+}
+.loginMiniTitle {
+  font-size: 24px;
+}
+
+.loginButton {
+  background-color: black;
+  color: white;
+  font-weight: 500;
+  border: none;
+  border-radius: 36px;
+  padding-block: 10px;
+  padding-inline: 38px;
+  font-size: 22px;
+  margin-top: 10px;
+}
+.loginPageFooter {
+  display: flex;
+  gap: 14px;
+  color: rgb(112, 106, 106);
+  font-size: 14px;
+  margin-top: 20px;
+  justify-content: center;
+  margin-bottom: 10px;
 }
