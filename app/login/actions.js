@@ -30,19 +30,20 @@ export async function signup(formData) {
   const supabase = createClient();
 
   const data = {
-    email: formData.get("email"),
-    password: formData.get("password"),
-  };
+    email: formData.get('email'),
+    password: formData.get('password'),
+  }
 
-  const { error } = await supabase.auth.signUp(data);
+  const { error } = await supabase.auth.signUp({...data,options:{data:{role:'user' , userName: formData.get('userName')}}})
 
   if (error) {
     console.log(error);
     return;
   }
 
-  revalidatePath("/", "layout");
-  redirect("/");
+  // Sayfayı revalidate etmek ve yönlendirmek için
+  revalidatePath("/","layout");
+  redirect("/posts");
 }
 
 export async function signOut() {

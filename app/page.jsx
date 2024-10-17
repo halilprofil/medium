@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { login, signup } from "./login/actions";
+import Image from "next/image";
 
 export default function Home() {
   const [showModal, setShowModal] = useState(false); 
@@ -40,7 +41,7 @@ export default function Home() {
           </div>
         </div>
         <div>
-          <img width={450} src="/assets/loginimage.webp" alt="" />
+          <Image width={450} height={600} src="/assets/loginimage.webp" alt="" />
         </div>
       </div>
       <div className="divider"></div>
@@ -63,8 +64,8 @@ export default function Home() {
           <dialog className="modal" open={showModal}>
             <h2>Join Medium.</h2>
             <form className="login-form">
-              <label htmlFor="name">Name</label>
-              <input id="name" name="name" type="text" required />
+              <label htmlFor="userName">User Name</label>
+              <input id="userName" name="userName" type="text" required />
               <label htmlFor="email">Email</label>
               <input id="email" name="email" type="email" required />
               <label htmlFor="password">Password</label>

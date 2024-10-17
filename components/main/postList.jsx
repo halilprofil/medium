@@ -8,6 +8,7 @@ import { useFormState } from "react-dom";
 import PostLikes from "./PostLikes";
 import PostComments from "./postComments";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function PostList() {
   const supabase = createClient();
@@ -56,6 +57,8 @@ export default function PostList() {
     return <div>Loading...</div>;
   }
 
+  console.log(user)
+
   return (
     <>
       {user ? (
@@ -63,26 +66,28 @@ export default function PostList() {
           <div className="post-container">
             {posts.map((post) => (
               <div className="post-card" key={post.id}>
-                 {/* Post Yazar Bilgisi */}
-                 <p className="post-author">
-                  {user.email ? `By ${user.email}` : "Unknown Author"}
-                </p>
+                <div className="post-text">
+                    {/* Post Yazar Bilgisi */}
+                  <p className="post-author">
+                    {user.email ? `By ${user.email}` : "Unknown Author"}
+                  </p>
 
 
-                {/* Post Kartı Başlığı */}
-                <h2 className="post-title">{post.title || "Untitled Post"}</h2>
+                  {/* Post Kartı Başlığı */}
+                  <h2 className="post-title">{post.title || "Untitled Post"}</h2>
 
-               
+                
 
-                {/* Post İçeriği */}
-                <p className="post-content">
-                  {post.content.length > 100
-                    ? `${post.content.substring(0, 100)}...`
-                    : post.content}
-                </p>
+                  {/* Post İçeriği */}
+                  <p className="post-content">
+                    {post.content.length > 100
+                      ? `${post.content.substring(0, 100)}...`
+                      : post.content}
+                  </p>
 
-                {/* Beğeni Butonu ve Sayısı ve Yorum */}
-                <form action={action} className="post-actions">
+                  {/* Beğeni Butonu ve Sayısı ve Yorum */}
+               <div className="post-actions">
+               <form action={action} className="post-actions">
                   <input type="hidden" name="postId" value={post.id} />
                   <button type="submit" className="like-button">
                     Beğen
@@ -90,14 +95,24 @@ export default function PostList() {
                   <PostLikes state={state} postId={post.id} />
                 </form>
                 <Link  href={`/posts/${post.id}`}><PostComments postId={post.id}/></Link>
+               </div>
+
+                  
+
+                </div>
+
+                <div className="post-image">
+                  <Image src={"/assets/post.webp"} width={150} height={100}  />
+                </div>
+                 
+
+                
               </div>
                
             ))}
            
           </div>
-
           
-
           {selectedPost && (
             <div>
               <dialog open={!!selectedPost}>
