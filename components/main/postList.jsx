@@ -7,6 +7,7 @@ import { likeAction } from "@/app/(main)/new-post/actions";
 import { useFormState } from "react-dom";
 import PostLikes from "./PostLikes";
 import PostComments from "./postComments";
+import Link from "next/link";
 
 export default function PostList() {
   const supabase = createClient();
@@ -62,13 +63,16 @@ export default function PostList() {
           <div className="post-container">
             {posts.map((post) => (
               <div className="post-card" key={post.id}>
+                 {/* Post Yazar Bilgisi */}
+                 <p className="post-author">
+                  {user.email ? `By ${user.email}` : "Unknown Author"}
+                </p>
+
+
                 {/* Post Kartı Başlığı */}
                 <h2 className="post-title">{post.title || "Untitled Post"}</h2>
 
-                {/* Post Yazar Bilgisi */}
-                <p className="post-author">
-                  {user.email ? `By ${user.email}` : "Unknown Author"}
-                </p>
+               
 
                 {/* Post İçeriği */}
                 <p className="post-content">
@@ -85,7 +89,7 @@ export default function PostList() {
                   </button>
                   <PostLikes state={state} postId={post.id} />
                 </form>
-                <PostComments postId={post.id}/>
+                <Link  href={`/posts/${post.id}`}><PostComments postId={post.id}/></Link>
               </div>
                
             ))}
