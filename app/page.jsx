@@ -52,16 +52,19 @@ const [showModal , setShowModal] = useState(false);
         <p>Text to speech</p>
         <p>Teams</p>
       </div>
-      <dialog open={showModal}>
-        <form>
-            <label htmlFor="email">Email:</label>
+      <dialog className="modal" open={showModal}>
+         <h2>Join Medium.</h2>
+        <form className="login-form">
+            <label htmlFor="name">Name</label>
+            <input id="name" name="name" type="text" required />
+            <label htmlFor="email">Email</label>
             <input id="email" name="email" type="email" required />
-            <label htmlFor="password">Password:</label>
+            <label htmlFor="password">Password</label>
             <input id="password" name="password" type="password" required />
             <button formAction={login}>Log in</button>
-            <button formAction={signup}>Sign up</button>
+            <div className="signUp"><p>Already have an account?</p><button formAction={signup}>Sign up</button></div>
         </form>
-      <button onClick={()=> setShowModal(false)}>x</button>
+      <button className="closeModal" onClick={()=> setShowModal(false)}>x</button>
       </dialog>
     </div>
   </div>

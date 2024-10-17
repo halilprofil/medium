@@ -178,3 +178,60 @@ a {
   justify-content: center;
   margin-bottom: 10px;
 }
+
+.modal{
+  padding-block: 75px;
+  width: 50%;
+  margin-inline: auto;
+  top: 100px;
+  border: transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 50px;
+  border-radius: 10px;
+  
+}
+
+.login-form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  input{
+    width: 400px;
+    height: 35px;
+    border-radius: 16px;
+  }
+  button{
+    border: transparent;
+    background-color: black;
+    color: white;
+    border-radius: 16px;
+    padding: 10px 30px;
+
+  }
+}
+
+.signUp{
+  display: flex;
+  gap: 5px;
+  button{
+    border: transparent;
+    color: green;
+    background-color: transparent;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 0px !important;
+
+  }
+}
+
+.closeModal{
+  top: 20px;
+  right: 30px;
+  position: absolute;
+  font-size: 20px;
+  border: transparent;
+  background-color: transparent;
+}
