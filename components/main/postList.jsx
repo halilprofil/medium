@@ -66,9 +66,6 @@ export default function PostList() {
                 <div
                   className="post-item"
                   key={post.id}
-                  onClick={() => {
-                    setSelectedPost(post);
-                  }}
                 >
                   {post.content}
                   <form action={action}>

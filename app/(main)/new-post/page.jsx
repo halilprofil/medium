@@ -2,7 +2,7 @@ import { SavePost } from "./actions";
 
 export default function NewPost() {
   return (
-    <div>
+    <div className="new-text">
       <form action={SavePost}>
         <input type="text" name="title" placeholder="Yazı Başlığı" />
         <br />

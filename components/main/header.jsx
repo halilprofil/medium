@@ -1,9 +1,12 @@
+
 import { createClient } from "@/utils/supabase/server";
 import Link from "next/link";
 import { signOut } from "@/app/login/actions";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBell } from "@fortawesome/free-regular-svg-icons";
 import { faPenToSquare } from "@fortawesome/free-regular-svg-icons";
+import ProfileStatus from "./profileStatus";
+
 
 export default async function MainHeader() {
   const supabase = createClient();
@@ -26,25 +29,13 @@ export default async function MainHeader() {
           <p>
             <FontAwesomeIcon icon={faBell} width={40} height={40} />
           </p>
-          <button>P</button>
+          <ProfileStatus user={user}/>
         </div>
       </div>
 
-      {user ? (
-        <ul>
-          <li> Hoşgeldin {user.email} </li>
-          <li>
-            <form action={signOut}>
-              <button>Çıkış yap</button>
-            </form>
-          </li>
-        </ul>
-      ) : (
-        <ul>
-          <Link href={"/login"}> Giriş yap </Link>
-          <Link href={"/sign-up"}> Kayıt ol </Link>
-        </ul>
-      )}
+      
+
+      
     </header>
   );
 }
