@@ -19,7 +19,7 @@ export async function SavePost(formData) {
     console.log(error);
   } else {
     console.log(data);
-    redirect(`/posts/${data.id}`);
+    redirect("posts/");
   }
 }
 

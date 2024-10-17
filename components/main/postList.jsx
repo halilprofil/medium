@@ -6,6 +6,7 @@ import AddComment from "./addComment";
 import { likeAction } from "@/app/(main)/new-post/actions";
 import { useFormState } from "react-dom";
 import PostLikes from "./PostLikes";
+import PostComments from "./postComments";
 
 export default function PostList() {
   const supabase = createClient();
@@ -15,10 +16,9 @@ export default function PostList() {
   const [state, action] = useFormState(likeAction, {
     errors: {
       comment: null,
-    }
+    },
   });
 
-  
   useEffect(() => {
     async function fetchUser() {
       const { data: { user } } = await supabase.auth.getUser();
@@ -27,22 +27,21 @@ export default function PostList() {
 
     fetchUser();
 
-    // Oturum değişikliklerini dinle
-    const { data: authListener } = supabase.auth.onAuthStateChange((event, session) => {
-      if (event === 'SIGNED_IN') {
-        setUser(session.user); // Kullanıcı oturum açtı
-      } else if (event === 'SIGNED_OUT') {
-        setUser(null); // Kullanıcı oturum kapattı
+    const { data: authListener } = supabase.auth.onAuthStateChange(
+      (event, session) => {
+        if (event === "SIGNED_IN") {
+          setUser(session.user);
+        } else if (event === "SIGNED_OUT") {
+          setUser(null);
+        }
       }
-    });
+    );
 
-    // Temizlik işlemi (event listener'ı kaldır)
     return () => {
       authListener.subscription.unsubscribe();
     };
   }, []);
 
-  
   useEffect(() => {
     async function getPosts() {
       const response = await supabase.from("posts").select("*");
@@ -61,21 +60,39 @@ export default function PostList() {
       {user ? (
         <div>
           <div className="post-container">
-            {posts &&
-              posts.map((post) => (
-                <div
-                  className="post-item"
-                  key={post.id}
-                >
-                  {post.content}
-                  <form action={action}>
-                    <input type="hidden" name="postId" value={post.id} />
-                    <button type="submit">Beğen</button>
-                    <PostLikes state={state} postId={post.id} />
-                  </form>
-                </div>
-              ))}
+            {posts.map((post) => (
+              <div className="post-card" key={post.id}>
+                {/* Post Kartı Başlığı */}
+                <h2 className="post-title">{post.title || "Untitled Post"}</h2>
+
+                {/* Post Yazar Bilgisi */}
+                <p className="post-author">
+                  {user.email ? `By ${user.email}` : "Unknown Author"}
+                </p>
+
+                {/* Post İçeriği */}
+                <p className="post-content">
+                  {post.content.length > 100
+                    ? `${post.content.substring(0, 100)}...`
+                    : post.content}
+                </p>
+
+                {/* Beğeni Butonu ve Sayısı ve Yorum */}
+                <form action={action} className="post-actions">
+                  <input type="hidden" name="postId" value={post.id} />
+                  <button type="submit" className="like-button">
+                    Beğen
+                  </button>
+                  <PostLikes state={state} postId={post.id} />
+                </form>
+                <PostComments postId={post.id}/>
+              </div>
+               
+            ))}
+           
           </div>
+
+          
 
           {selectedPost && (
             <div>
