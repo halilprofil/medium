@@ -27,6 +27,8 @@ export async function SavePost(formData) {
 export async function addCommentFormAction(prevState, formData) {
   const comment = formData.get("comment");
   const postId = Number(formData.get("postId"));
+  const userName = formData.get("userName");
+
   console.log(typeof postId);
   const supabase = createClient();
   if (!comment) {
@@ -43,7 +45,7 @@ export async function addCommentFormAction(prevState, formData) {
 
   const { error, data } = await supabase
     .from("comments")
-    .insert({ content: comment, is_active: true, user_id: user.id, post_id: postId })
+    .insert({ content: comment, is_active: true, user_id: user.id, post_id: postId , user_name: userName, })
     .select()
     .single();
 

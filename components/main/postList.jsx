@@ -57,7 +57,8 @@ export default function PostList() {
     return <div>Loading...</div>;
   }
 
-  console.log(user)
+  console.log(user);
+  console.log(posts)
 
   return (
     <>
@@ -69,7 +70,7 @@ export default function PostList() {
                 <div className="post-text">
                     {/* Post Yazar Bilgisi */}
                   <p className="post-author">
-                    {user.email ? `By ${user.email}` : "Unknown Author"}
+                    {post.user_name ? `By ${post.user_name}` : "Unknown Author"}
                   </p>
 
 
