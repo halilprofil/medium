@@ -9,6 +9,7 @@ import PostLikes from "./PostLikes";
 import PostComments from "./postComments";
 import Link from "next/link";
 import Image from "next/image";
+import { redirect } from "next/navigation";
 
 export default function PostList() {
   const supabase = createClient();
@@ -20,6 +21,10 @@ export default function PostList() {
       comment: null,
     },
   });
+
+  if(user === null){
+    redirect("/")
+  }
 
   useEffect(() => {
     async function fetchUser() {

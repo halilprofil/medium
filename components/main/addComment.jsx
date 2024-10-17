@@ -23,7 +23,7 @@ export default function AddComment({ postId }) {
     fetchUser();
   }, []);
 
-  console.log(user.user_metadata.userName);
+  
   return (
     <div>
       <form action={action}>
