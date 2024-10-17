@@ -7,13 +7,14 @@ import { redirect } from "next/navigation";
 export async function SavePost(formData) {
   const title = formData.get("title");
   const content = formData.get("content");
+  const userName = formData.get("userName");
   const supabase = createClient();
 
   const {
     data: { user },
   } = await supabase.auth.getUser();
 
-  const { error, data } = await supabase.from("posts").insert({ title, content, user_id: user.id }).select().single();
+  const { error, data } = await supabase.from("posts").insert({ title, content, user_id: user.id , user_name: userName }).select().single();
 
   if (error) {
     console.log(error);
