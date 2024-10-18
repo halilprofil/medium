@@ -22,9 +22,6 @@ export default function PostList() {
     },
   });
 
-  if(user === null){
-    redirect("/")
-  }
 
   useEffect(() => {
     async function fetchUser() {
@@ -49,6 +46,8 @@ export default function PostList() {
     };
   }, []);
 
+  
+ 
   useEffect(() => {
     async function getPosts() {
       const response = await supabase.from("posts").select("*");
@@ -62,8 +61,9 @@ export default function PostList() {
     return <div>Loading...</div>;
   }
 
-  console.log(user);
-  console.log(posts)
+  if(user === null){
+    redirect("/")
+  }
 
   return (
     <>
